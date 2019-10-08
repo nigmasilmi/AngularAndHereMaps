@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Deploy
 
-Try this app by checking [its deploy](https://dashboard.heroku.com/apps/angular-and-heremaps/)
+Try this app by checking [its deploy](https://angular-and-heremaps.herokuapp.com/)
 
 
 
