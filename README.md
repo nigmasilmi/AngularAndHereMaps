@@ -45,8 +45,8 @@ ElementRef: wraps a native DOM elements and exposes all of their attributes and 
 8. In the Class constructor we call the Here platform service so it can be available when the component is rendered, this must be in conjunction with our own app ID and API Key.
 9. As part of a class method we must implement ngAfeterViewInit (method) that is part of the imported Interface AfterViewInit. And what role does ngAfterViewInit play? Ensures that whatever code block is inside of this method, must be executed only when the view has been initialized. Hey, make sure that you implement it in the class itself, otherwise, TSLint won't let you sleep.
 10. What is that "so-important" block code that must be wrapped in ngAfterViewInit? The heart and soul of the API: its default layers, and the code that is needed to render the map in a specific location with a defined zoom and the center in the rendered view, AKA our mapElement.
-11. ngserve that!
-
+11. ngserve that! 
+This is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570672610/mapHometown_lnelqz.png)
 
 
 
