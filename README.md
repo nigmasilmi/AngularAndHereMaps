@@ -19,9 +19,9 @@ The functionality must include adding favorites stores in a list, triggered by c
 
 ## Evolving
 
-To achive the functionality, I have built by @baby steps@ in order to familiarize with Here We Go Maps (C) and its integration in Angular 8.
+To achive the functionality, I have built by @baby steps@ in order to familiarize with Here Maps (C) and its integration in Angular 8.
 
-The evolution can be checked in the master commits of this repository.
+The evolution can be checked in the master branch commits of this repository.
 
 ### Getting to Know DOM References
 
@@ -37,16 +37,26 @@ ElementRef: wraps a native DOM elements and exposes all of their attributes and 
 #### Evolving: lets render my hometown in the map
 1. Let's skip the Angular/CLI installation and the Angular App initialization (I'm sure you can figure that out already)
 2. In index.html we need to referenc the core and service libraries from Here Maps. Make sure it is near the end of the html body, we want to make sure that the main structure is loaded before we do anything else (maybe we need more than this, but later).
-3. Include in the main component a <div> element that sets the place for the map rendering. We need to "mark it" with a 'kindof' id, that is not such but a way to identify it in a way Angular-compatible (#map).
+3. Include in the main component a <div> element that sets the place for the map rendering. We need to "mark it" with a 'kindof' id, that is not such but a way to identify it in a Angular-compatible way (#map).
 4. "First comes the #map, then comes the logic". Now lets tell the main component what to do: import the required Angular/core classes (other that the already and kindly imported by the CLI): ViewChild & ElementRef.
 5. Create an external-to-the-class property named "H" of the type "any". This will help us calling the Here API implemenmtation. Wait and see...but first we must use the reserved keyword "declare" why? because H is not defined per se in our app, it is defined somewhere else (HERE API), and we must notice that to our code.
 6. For the class properties, we must declare: platform, mapElement. The former will serve as part of the API implementation and the later as the logic handle of our DOM element of interest.
 7. Platform must be type of "any" and mapElement must be identified with the "idish" indicator we have set in the view. As in Angular 8, @ViewChild receives one additional parameter, type of object and its property value a boolean, if it is true means "wait untill the queries are answered before rendering this element"...why you say? because what if we need to show a result as an element for the DOM? we must get this result first in order to show it in the view.
 8. In the Class constructor we call the Here platform service so it can be available when the component is rendered, this must be in conjunction with our own app ID and API Key.
-9. As part of a class method we must implement ngAfeterViewInit (method) that is part of the imported Interface AfterViewInit. And what role does ngAfterViewInit play? Ensures that whatever code block is inside of this method, must be executed only when the view has been initialized. Hey, make sure that you implement it in the class itself, otherwise, TSLint won't let you sleep.
+9. As part of a class method we must implement ngAfterViewInit (method) that is part of the imported Interface AfterViewInit. And what role does ngAfterViewInit play? Ensures that whatever code block is inside of this method, must be executed only when the view has been initialized. Hey, make sure that you implement it in the class itself, otherwise, TSLint won't let you sleep.
 10. What is that "so-important" block code that must be wrapped in ngAfterViewInit? The heart and soul of the API: its default layers, and the code that is needed to render the map in a specific location with a defined zoom and the center in the rendered view, AKA our mapElement.
 11. ngserve that! 
 This is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570672610/mapHometown_lnelqz.png)
+
+#### Evolving: lets make it useful Part 1
+So, at this moment we are suscribed to see just one location in the map but no more than that. What if we want to point some place else in the map, or, beyond that, we want to make the component useful for another siblings in the app?
+Then, we create a customizable component with DOM binding properties.
+1. Import the required modules, same as the first render,  plus the Input module. And what does Input Module do? It is a decorator that sets a class property to an input field and to a DOM property, also,  as decorator provides metadata. We can bind parent to child inputs by setting inside the parent, the tag selector of the child and the binding target. '<parent><child [inputProperty]="someValueFromTheParentView"></child></parent>'
+2. Create input-decorated properties in the customizable component and bind the properties with specified values. Let's create two elements with the customizable selector in the app.component.html to show the differences by setting specific properties for each element.
+This is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570754487/mapHometown2_ifzxwt.png)
+
+
+
 
 
 

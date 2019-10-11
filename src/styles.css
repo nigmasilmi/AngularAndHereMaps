@@ -1,10 +1,14 @@
 /* Using App Global Styles */
 body {
   font-family: 'Dosis', sans-serif;
+  margin-left: 25%;
 }
 
+h3{
+  text-align: center;
+}
 
-#mapContainer {
-    width: 640px;
-    height: 350px;
-  }
+app-customizable-map-component{
+  background: rgb(162, 162, 219);
+  border: 2px solid rgb(44, 223, 44);
+}
