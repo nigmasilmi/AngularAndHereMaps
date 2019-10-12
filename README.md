@@ -56,6 +56,23 @@ Then, we create a customizable component with DOM binding properties.
 This is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570754487/mapHometown2_ifzxwt.png)
 
 
+#### Evolving: lets make it useful Part 2
+
+
+We want to show markers in the map that corresponds to places, requested by string queries, why? to get nearer the aim of the app, using some tutorials as learning resources and then extrapolate the functionality to the desired MVP.
+
+As an approach to gradually understand the integration Angular/Here, let´s explore some interaction. What do we need for interactions? Events and listeners, that is why we must link the UI, Events library of Here.
+
+As class properties, these will be ui and search.
+
+
+1. We will use the Places(Search) API from Here Maps, with which we can -among other things- search a place by a 'text string search', it returns an array with the possible matches, each one being an object with the properties: title, category, type, etc. A request is constructed by Base URL/Path/Resource/AppId/AppCode. To perform a search we will use the low level access service H.service.PlacesService and its method request, that receives entry point and entry point parameters. This service will be available at ngOnInit lifecycle hook because it not dependant on the ui, just the service, then we will pass the arguments.
+
+2. As I mentioned earlier, the interaction is successful if there is an event and a listener, meaning some behavior user-app, for that we will use the class H.mapevents.Behavior that encapsulates events and functionality. This depends on the readyness of the ui, that is why we will use it in the ngAfterViewInit hook, and also H.ui.UI.createDefault that will be the user interaction interface instantiation.
+
+3. Let's render a map with the center being México city, and then input a string to request places in Mexico. In this case I'm showing the result of querying for "fonda".
+This is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570841586/fonda_za899d.png)
+
 
 
 

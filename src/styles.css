@@ -1,14 +1,18 @@
 /* Using App Global Styles */
 body {
   font-family: 'Dosis', sans-serif;
-  margin-left: 25%;
+  /* margin-left: 25%; */
 }
 
 h3{
   text-align: center;
 }
 
-app-customizable-map-component{
+/* app-customizable-map-component{
   background: rgb(162, 162, 219);
   border: 2px solid rgb(44, 223, 44);
+} */
+
+.H_ib_body {
+  width: 275px;
 }
