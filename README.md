@@ -73,7 +73,8 @@ As class properties, these will be ui and search.
 3. Let's render a map with the center being México city, and then input a string to request places in Mexico. In this case I'm showing the result of querying for "fonda".
 This is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570841586/fonda_za899d.png)
 
-
+But, wait, How does this code works? it will be better to visually explain it:
+ [Click here](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570890752/VisualCodeExplanation-01_rvmtl7.jpg)
 
 
 
