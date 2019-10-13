@@ -76,6 +76,31 @@ This is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v15708415
 But, wait, How does this code works? it will be better to visually explain it:
  [Click here](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570890752/VisualCodeExplanation-01_rvmtl7.jpg)
 
+## Time to jump into the pool
+
+Now that there have been some interaction and understanding of the Here API, it is time to create the component with the Challenge coding.
+Now, I will update the milestones and issues for this repo.
+
+This challenge will be based on the previous evolving exercises, with some differences:
+1. The markers will not be as a result of a search query but from the iteration of a JSON content
+2. The the functions that will be triggered by the "tap" event are a little more complex, because aside of displaying the vignette with the location info, that should be placed in a list with removable items.
+So...
+
+### First: Create basic functionality
+
+a. Should I import the preexisting component or should I make a brand new one?
+Pros and Cons: that requires further investigation about the components import into another one... That is why the services are created, so, should I create a service with the basic functionality? Let´s try that.
+Now I have tried creating a service that performs the actions to query the places and information needed from the API, but I fell in the hole of circular recurrency, why? because I needed to make a reference to the native DOM element in order to render the map, making that from a service depends on the component into which the service is injected, so importing the component into the service to reach that property didn't make much sense...so, I'll create a new component with the functionality instead. That is not congruent with the DRY principle, but, just I'll try untill I come up with a better solution.
+
+b. How to access the local JSON file in an Angular Project? After several attempts, and working with Typescript 2.9+, the course of actions that worked were: - Adding the "resolveJsonModule": true, and "esModuleInterop": true to the tsconfig.json file and create a json-typing.d.ts file that helps with the parsing.
+
+c. Create a function that iterates through the JSON file, takes its Name property as a query and the lat and lng as arguments for executing the request API method.
+
+d. Create a function that renders a dropMarker for each iteration and then creates an infoBubble that shows the name of the store as a response of a tap event.
+
+It is done and this is [the result](https://res.cloudinary.com/dz3gm9c3w/image/upload/v1570965594/showingMexStores_rwvhwn.png)
+
+### Next: Create the favorite list
 
 
 ## Development server

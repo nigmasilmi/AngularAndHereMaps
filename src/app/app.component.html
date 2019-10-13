@@ -1,7 +1,8 @@
 
 
+
 <div style="padding: 10px 0">
-    <input type="text" placeholder="Search places..." [(ngModel)]="query" />
-    <button (click)="map.places(query)">Search</button>
+    <button (click)="storesMap.storesFinding()">Show Stores</button>
 </div>
-<app-customizable-map-component #map appId="SfVZCMMP7oc05mbL7RZE" appCode="dtItdasKG20eQREIraLYLg" lat="19.4326" lng="-99.1332" width="100%" height="800px"></app-customizable-map-component>
+
+<app-stores-map #storesMap ></app-stores-map>

@@ -4,7 +4,7 @@ body {
   /* margin-left: 25%; */
 }
 
-h3{
+h3 {
   text-align: center;
 }
 
@@ -15,4 +15,22 @@ h3{
 
 .H_ib_body {
   width: 275px;
+  background: rgb(233, 101, 53);
+  color: whitesmoke;
+  font-family: 'Dosis', sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+button {
+  display: block;
+  border: none;
+  background: orangered;
+  color: white;
+  width: 50%;
+  margin: 0 auto;
+  cursor: pointer;
+  padding: 3%;
+  font-size: 1.2em;
+
 }

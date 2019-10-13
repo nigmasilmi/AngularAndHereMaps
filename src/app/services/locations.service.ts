@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class LocationsService {
 
 
-  // make the platform object available inmediatly after the service calling
   constructor() {}
+
 
 }

@@ -61,8 +61,8 @@ export class CustomizableMapComponentComponent implements OnInit, AfterViewInit 
   public places(query: string) {
     this.map.removeObjects(this.map.getObjects());
     this.search.request({ q: query, at: this.lat + ',' + this.lng }, {}, data => {
-      for (let i = 0; i < data.results.items.length; i++) {
-        this.dropMarker({ lat: data.results.items[i].position[0], lng: data.results.items[i].position[1] }, data.results.items[i]);
+      for (const item of data.results.items) {
+        this.dropMarker({ lat: item.position[0], lng: item.position[1] }, item);
       }
     }, error => {
       console.error(error);
