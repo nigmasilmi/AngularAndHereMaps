@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
-
+import { BehaviorSubject } from 'rxjs';
 import storesData from './../../../../store_directory.json';
-console.log(storesData);
+import { LocationsService } from 'src/app/services/locations.service.js';
 
 declare const H: any;
 
@@ -29,9 +29,12 @@ export class StoresMapComponent implements OnInit, AfterViewInit {
   public width = '100%';
   public height = '500px';
 
+  public actualStoreName: string;
+  public updatedStore: string;
 
 
-  constructor() { }
+
+  constructor(public locationsService: LocationsService) {}
 
   ngOnInit() {
     this.platform = new H.service.Platform({
@@ -51,20 +54,21 @@ export class StoresMapComponent implements OnInit, AfterViewInit {
         center: { lat: this.lat, lng: this.lng }
       }
     );
+
     const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     this.ui = H.ui.UI.createDefault(this.map, defaultLayers);
 
   }
 
-  public storesFinding() {
+  storesFinding() {
     this.map.removeObjects(this.map.getObjects());
 
     for (const store of storesData) {
       const query = store.Name;
       const latIn = store.Coordinates.lat;
       const lngIn = store.Coordinates.lng;
-      this.search.request({ q: query, at: latIn + ',' + lngIn}, {}, data => {
-        this.dropMarker({lat: latIn, lng: lngIn}, store);
+      this.search.request({ q: query, at: latIn + ',' + lngIn }, {}, data => {
+        this.dropMarker({ lat: latIn, lng: lngIn }, store);
       }, error => {
         console.error(error);
       });
@@ -73,15 +77,28 @@ export class StoresMapComponent implements OnInit, AfterViewInit {
 
 
   private dropMarker(coordinates: any, data: any) {
+    let bubble: any;
     const marker = new H.map.Marker(coordinates);
-    // marker.setData('<p>' + data.title + '<br>' + data.vicinity + '</p>');
     marker.setData('<p>' + data.Name + '</p>');
     marker.addEventListener('tap', event => {
-      const bubble = new H.ui.InfoBubble(event.target.getPosition(), {
+      bubble = new H.ui.InfoBubble(event.target.getPosition(), {
         content: event.target.getData()
       });
+      this.actualStoreName = data.Name;
+      console.log('esto es actualStoreName en el map component: ', this.actualStoreName);
+      this.sendStoreToService(this.actualStoreName);
       this.ui.addBubble(bubble);
-    }, false);
+    }, true);
+
     this.map.addObject(marker);
+
   }
+
+  sendStoreToService(catchTheStore: string) {
+    catchTheStore = this.actualStoreName;
+    console.log('catchTheStore: ', catchTheStore);
+    this.locationsService.setStoreComingFromMap(catchTheStore);
+  }
+
+
 }

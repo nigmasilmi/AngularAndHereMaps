@@ -11,9 +11,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 export class AppComponent implements OnInit {
 
     public query: string;
-    public constructor() {
-        this.query = 'fonda';
-    }
+    public constructor() {}
 
     public ngOnInit() { }
 
