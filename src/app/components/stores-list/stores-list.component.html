@@ -1,11 +1,11 @@
 <div class="listHeaderTitle">
 <h3>My Favorite Mexican Stores List</h3>
 </div>
-<button class="listBtn" (click)="updateList()"> Add<span *ngIf="changeBtnBool">{{btnText}} </span> to the list</button>
+<button class="listBtn" (click)="updateReadyList()"> Add<span *ngIf="changeBtnBool">{{btnText}} </span> to the list</button>
 
 
 <ul>
-    <li *ngFor="let store of listArray"> 
+    <li *ngFor="let store of liReadyToView"> 
         {{store}} 
         <i class="fas fa-trash" (click)="removeStore(store)"></i>
     </li>

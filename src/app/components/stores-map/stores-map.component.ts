@@ -11,11 +11,18 @@ export class StoresMapComponent implements OnInit, AfterViewInit {
 
   width = this.locationsService.width;
   height = this.locationsService.height;
-  @ViewChild('storesMap', { static: true })
+
+  @ViewChild('storesMap', { static: false })
   mapElement: ElementRef;
 
+  // public interestData = Array<any>();
+  public interestData = ['uno', 'dos', 'tres'];
 
-  constructor(public locationsService: LocationsService) { }
+
+  constructor(public locationsService: LocationsService) {
+    this.locationsService.updateList(this.interestData);
+
+  }
 
   ngOnInit() {
     this.locationsService.getPlacesInMap();

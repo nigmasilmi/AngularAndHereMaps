@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import storesData from './../../../store_directory.json';
+import { Observable, Subject } from 'rxjs';
 
 declare const H: any;
 
@@ -9,7 +10,9 @@ declare const H: any;
 export class LocationsService {
 
 
-  constructor() {}
+  constructor() {
+    this.temporalList = this.listSubject.asObservable();
+  }
 
 
   public appId = 'SfVZCMMP7oc05mbL7RZE';
@@ -29,21 +32,31 @@ export class LocationsService {
   public actualStoreName: string;
   public updatedStore: string;
 
-  public temporalList: Array<string> = [];
+  // data of interest
+  public temporalList: Observable<any>;
+  private listSubject = new Subject<any>();
 
 
-// function that loads the getPlaces API functionality
+  // method that updates the interest data
 
-getPlacesInMap() {
-this.platform = new H.service.Platform({
-  app_id: this.appId,
-  app_code: this.appCode
-});
-this.search = new H.places.Search(this.platform.getPlacesService());
-}
+  updateList(data) {
+    this.listSubject.next(data);
+    this.temporalList.subscribe(whatComes => {
+      console.log('si me suscribo a la data en el servicio esto es lo que trae: ', whatComes);
+    });
+  }
+  // method that loads the getPlaces API functionality
+
+  getPlacesInMap() {
+    this.platform = new H.service.Platform({
+      app_id: this.appId,
+      app_code: this.appCode
+    });
+    this.search = new H.places.Search(this.platform.getPlacesService());
+  }
 
 
-  // funtion that brings the data from the JSON
+  // method that brings the data from the JSON
   // and processes it to a marker for each store in the map
   storesFinding() {
     this.map.removeObjects(this.map.getObjects());
@@ -70,18 +83,13 @@ this.search = new H.places.Search(this.platform.getPlacesService());
         content: event.target.getData()
       });
       this.actualStoreName = data.Name;
-      temporalInsideList.push(this.actualStoreName);
+      this.updateList(this.actualStoreName);
       console.log('esto es actualStoreName en el servicio: ', this.actualStoreName);
       this.ui.addBubble(bubble);
     }, true);
 
     this.map.addObject(marker);
-    this.temporalList = temporalInsideList;
-    console.log(this.temporalList);
   }
 
-  confirmTheAddition() {
-    return this.temporalList;
-  }
 
 }
