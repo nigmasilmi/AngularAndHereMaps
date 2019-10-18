@@ -18,15 +18,12 @@ export class StoresListComponent implements OnInit {
   public listArray: Array<string> = ['a', 'b', 'c'];
 
 
-  constructor() {}
+  constructor(private locationsService: LocationsService) {}
 
   ngOnInit() {}
 
   updateList() {
-    // this.changeBtnBool = true;
-    // this.actualStoreName = this.locationsService.makeStoreAvailable();
-    console.log('this.actualStoreName', this.actualStoreName);
-    // this.listArray.push(this.actualStoreName);
+    this.listArray = this.locationsService.confirmTheAddition();
   }
 
   removeStore(store) {

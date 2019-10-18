@@ -1,8 +1,13 @@
-<router-outlet></router-outlet>
 <div class="headerTitle">
   <h2>Mexican Stores Portal</h2>
-  <a routerLink="/container">
-    <h4>- Click here to make a list of your favorites - </h4>
-  </a>
 </div>
 
+<div class="rootWrapper">
+  <div class="mapWrapper">
+    <app-stores-map></app-stores-map>
+
+  </div>
+  <div class="listWrapper">
+    <app-stores-list></app-stores-list>
+  </div>
+</div>
