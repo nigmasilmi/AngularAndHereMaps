@@ -1,5 +1,7 @@
+<app-stores-list class="listWrapper" [storesList] = "storesList"></app-stores-list>
+
+<button class="showBtn" (click)="findStores()">Show Stores</button>
 
 <div #storesMap [style.width]="width" [style.height]="height"></div>
-<div>
-    <button class="showBtn" (click)="findStores()">Show Stores</button>
-  </div>
+
+

@@ -25,7 +25,6 @@ li {
 .headerTitle {
   text-align: center;
   font-size: 2em;
-  height: 34vh;
 }
 
 .rootWrapper {
@@ -35,17 +34,34 @@ li {
 }
 
 .mapWrapper {
-  border: 5px solid green;
-  width: 50vw;
+  border: 5px solid rgb(206, 91, 14);
+  width: 90vw;
   background: whitesmoke;
 
 }
 
 .listWrapper {
-  width: 30vw;
-  margin-left: 8%;
-  background: whitesmoke;
-  border: 5px solid green;
+  display:flex;
+  flex-wrap: wrap;
+  width: 50vw;
+  margin-left: 19%;
+  background: rgb(240, 133, 71);
+  border: 5px solid rgb(206, 91, 14);
+  z-index: 3;
+  margin-top: 4%;
+  
+}
+ul{
+  margin-left: 18%;
+}
+
+li{
+  background: honeydew;
+  width: 150%;
+  border-top: solid 3px transparent;
+  border-bottom: 2px solid orangered;
+  padding: 4%;
+
 }
 
 
@@ -53,10 +69,7 @@ h3 {
   text-align: center;
 }
 
-/* app-customizable-map-component{
-  background: rgb(162, 162, 219);
-  border: 2px solid rgb(44, 223, 44);
-} */
+
 
 .H_ib_body {
   width: 275px;
@@ -87,7 +100,7 @@ button:hover {
   color: #ffffff !important;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  border-color: green !important;
+  border-color: grey !important;
   transition: all 0.3s ease 0s;
 }
 

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoresMapComponent } from './components/stores-map/stores-map.component';
 import { StoresListComponent } from './components/stores-list/stores-list.component';
-import { LocationsService } from './services/locations.service';
 
 
 
@@ -20,7 +19,6 @@ import { LocationsService } from './services/locations.service';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [LocationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 // declare const H: any;
@@ -10,7 +10,6 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 })
 export class AppComponent implements OnInit {
 
-    public query: string;
     public constructor() {}
 
     public ngOnInit() { }

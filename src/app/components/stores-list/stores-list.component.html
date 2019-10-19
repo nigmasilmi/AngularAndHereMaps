@@ -1,13 +1,8 @@
-<div class="listHeaderTitle">
-<h3>My Favorite Mexican Stores List</h3>
-</div>
-<button class="listBtn" (click)="updateList()"> Add<span *ngIf="changeBtnBool">{{btnText}} </span> to the list</button>
-
 
 <ul>
-    <li *ngFor="let store of listArray"> 
-        {{store}} 
-        <i class="fas fa-trash" (click)="removeStore(store)"></i>
-    </li>
-    
+  <h4 style="color: azure;">This is your favorite stores list</h4>
+  <li *ngFor="let store of storesList">
+    {{store}}
+    <i (click)="removeStore(store)" class="fas fa-trash"></i>
+  </li>
 </ul>
